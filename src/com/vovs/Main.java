@@ -1,10 +1,15 @@
 package com.vovs;
 import com.sun.xml.internal.ws.api.ha.StickyFeature;
+
+import java.util.List;
 import java.util.Scanner;
+import java.util.ArrayList;
+import com.vovs.IUser;
 
 
 
 public class Main {
+    private static ArrayList arrUsers = new ArrayList();
     private final static String menu =
             "\n\nДля работы с приложение выберите один из пунктов меню\n\n" +
                     "Меню:\n" +
@@ -14,6 +19,25 @@ public class Main {
                     "4: Удалить контакт\n" +
                     "0: Выход\n" +
                     "Введите пункт меню - ";
+    public static void addUnit(){
+        Scanner scanner = new Scanner(System.in);
+        boolean b1=false;
+        IUser cUser=new IUser();
+        while (!b1) {
+            // валидируем и добавляем имя
+            System.out.println("Введите Имя нового пользователя");
+            b1=cUser.setName(scanner.nextLine());
+            if (!b1) { System.out.println("Длинна имени меньше 5 букв. Повторите ввод");}
+        }
+        while (!b1) {
+            // валидируеми добавляем майл
+            System.out.println("Введите Email нового пользователя");
+            b1=cUser.setEmail(scanner.nextLine());
+            if (!b1) { System.out.println("Длинна адреса меньше 6 букв или '@' '.' ' '.   Повторите ввод");}
+        }
+        arrUsers.add(cUser);
+
+    }
 
     public static void main(String[] args) {
         // write your code here
@@ -25,6 +49,7 @@ public class Main {
 
             switch (menuId) {
                 case 1:
+                    addUnit();
                     break;
                 case 2:
                     break;
