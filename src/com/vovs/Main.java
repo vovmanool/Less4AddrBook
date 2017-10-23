@@ -62,7 +62,8 @@ public class Main {
     public static void editUser(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите номер записи которую вы ходите отредактировать:");
-        int editId = scanner.nextInt();
+        String  editSt = scanner.nextLine();
+        int editId=Integer.parseInt(editSt);
 
         if (editId<=arrUsers.size()){
             boolean b1=false;
