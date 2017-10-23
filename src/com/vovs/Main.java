@@ -59,7 +59,36 @@ public class Main {
         }
 
     }
+    public static void editUser(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите номер записи которую вы ходите отредактировать:");
+        int editId = scanner.nextInt();
 
+        if (editId<=arrUsers.size()){
+            boolean b1=false;
+            theUser=(IUser)arrUsers.get(editId);
+            while (!b1) {
+                // валидируем и обновляем имя
+                System.out.println("Введите новое имя вместо '"+theUser.getName()+"'");
+                String string=scanner.nextLine();
+                b1=theUser.setName(string);
+                if (!b1) { System.out.println("Длинна имени меньше 5 букв. Повторите ввод");}
+            }
+            b1=false;
+            while (!b1) {
+                // валидируеми обновляем майл
+                System.out.println("Введите Email место '"+theUser.getEmail()+"'");
+                String string=scanner.nextLine();
+                b1=theUser.setEmail(string);
+                if (!b1) { System.out.println("Длинна адреса меньше 6 букв или '@' '.' ' '.   Повторите ввод");}
+            }
+            arrUsers.set(editId,theUser);
+
+
+            System.out.println("Запись № "+editId + " изменена");
+        }
+
+    }
 
     public static void main(String[] args) {
         // write your code here
@@ -77,7 +106,7 @@ public class Main {
                     outputUser();
                     break;
                 case 3:
-                    //editUser();
+                    editUser();
                     break;
                 case 4:
                     delUser();
