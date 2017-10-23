@@ -49,6 +49,17 @@ public class Main {
 
         }
     }
+    public static void delUser(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите номер записи которую вы ходите удалить:");
+        int delId = scanner.nextInt();
+        if (delId<=arrUsers.size()){
+            arrUsers.remove(delId);
+            System.out.println("Запись № "+delId + " удалена");
+        }
+
+    }
+
 
     public static void main(String[] args) {
         // write your code here
@@ -66,8 +77,10 @@ public class Main {
                     outputUser();
                     break;
                 case 3:
+                    //editUser();
                     break;
                 case 4:
+                    delUser();
                     break;
                 case 0:
                     System.out.println("Досвидос!");
