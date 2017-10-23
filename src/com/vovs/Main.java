@@ -10,6 +10,7 @@ import com.vovs.IUser;
 
 public class Main {
     private static ArrayList arrUsers = new ArrayList();
+    public static IUser theUser;
     private final static String menu =
             "\n\nДля работы с приложение выберите один из пунктов меню\n\n" +
                     "Меню:\n" +
@@ -19,6 +20,7 @@ public class Main {
                     "4: Удалить контакт\n" +
                     "0: Выход\n" +
                     "Введите пункт меню - ";
+
     public static void addUnit(){
         Scanner scanner = new Scanner(System.in);
         boolean b1=false;
@@ -29,6 +31,7 @@ public class Main {
             b1=cUser.setName(scanner.nextLine());
             if (!b1) { System.out.println("Длинна имени меньше 5 букв. Повторите ввод");}
         }
+        b1=false;
         while (!b1) {
             // валидируеми добавляем майл
             System.out.println("Введите Email нового пользователя");
@@ -37,6 +40,14 @@ public class Main {
         }
         arrUsers.add(cUser);
 
+    }
+    public static void outputUser(){
+        System.out.println("Список контактов");
+        for (int i = 0; i < arrUsers.size(); i++) {
+            theUser=(IUser)arrUsers.get(i);
+            System.out.println(i+" "+theUser.getName()+" "+theUser.getEmail());
+
+        }
     }
 
     public static void main(String[] args) {
@@ -52,6 +63,7 @@ public class Main {
                     addUnit();
                     break;
                 case 2:
+                    outputUser();
                     break;
                 case 3:
                     break;
